@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="searchController">
+    <head>
+        <title>Search Concept</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Cache-control" content="no-cache">
+        <script src="js/vendor/angular.min.js"></script>
+        <script src="js/vendor/jquery-2.1.4.min.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript">
+            loadManifest();
+        </script>
+        <script type="text/javascript" src="js/searchController.js"></script>
+        <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Lucida Console', Monaco, monospace;
+        }
+
+        button {
+            border:2px solid #009384;
+            border-radius:10px;
+            padding: 5px;
+            width: 80px;
+            height: 40px;
+            font-size: 18px;
+        }
+
+        table, th, td {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 8px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th {
+            height: 30px;
+            background-color: #009384;
+            color: white;
+            font-size: 150%;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2}
+
+        .large-field {
+            border:2px solid #009384;
+            border-radius:10px;
+            padding: 5px;
+            font-size: 18px;
+            height: 30px;
+            width: 800px;
+        }
+
+        </style>
+    </head>
+    <body ng-controller="SearchConceptCtrl">
+        <h1 style='color:#009384;font-weight:lighter'>Search Concept</h1>
+        <input type="text" class="large-field" 
+            onkeydown="
+                if (event.keyCode == 13)
+                        document.getElementById('searchBtn').click()
+            "
+            ng-model="query" 
+        />
+        <button id="searchBtn" ng-click="searchConcept()">Search</button>
+        <p>{{showing}}</p>
+        <table>
+            <tr>
+                <th>uuid</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr ng-repeat="concept in concepts">
+                <td>{{concept.uuid}}</td>
+                <td>{{concept.name.name}}</td>
+                <td>{{concept.description.display}}</td>
+            </tr>
+        </table>
+    </body>
+</html>

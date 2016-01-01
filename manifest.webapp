@@ -1,0 +1,21 @@
+{
+    "version": "1.0",
+    "name": "Concept Search",
+    "description": "Search through concepts in an instant.",
+    "launch_path": "/index.html",
+    "icons": {
+        "16": "/img/icons/openmrs-logo.png",
+        "48": "/img/icons/openmrs-logo.png",
+        "128": "/img/icons/openmrs-logo.png"
+    },
+    "developer": {
+        "name": "Vicente Bermúdez",
+        "url": "https://wiki.openmrs.org/display/~vincentes"
+    },
+    "default_locale": "en",
+    "activities": {
+      "openmrs": {
+        "href": "*"
+      }
+    }
+}

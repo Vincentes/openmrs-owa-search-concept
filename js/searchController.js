@@ -6,6 +6,7 @@ var manifest = jQuery.getJSON( "manifest.webapp", function( json ) {
 
 app.controller('SearchConceptCtrl', function($scope, $http) {
 	$scope.query = "";
+	$scope.showing = "";
 
 	$scope.searchConcept = function() {
 		$http({ method: 'GET', url: apiBaseUrl + 'concept?q=' + $scope.query + '&v=custom:(uuid,name,description)' }).

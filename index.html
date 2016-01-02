@@ -50,9 +50,21 @@
             background-color: #009384;
             color: white;
             font-size: 150%;
-        }
+        }  
 
         tr:nth-child(even){background-color: #f2f2f2}
+
+        .font-normal {
+            font-style: normal; 
+        }
+
+        .font-italic {
+            font-style: italic;
+        }
+
+        .font-oblique {
+            font-style: oblique;
+        }
 
         .large-field {
             border:2px solid #009384;
@@ -75,8 +87,8 @@
             ng-model="query" 
         />
         <button id="searchBtn" ng-click="searchConcept()">Search</button>
-        <p>{{showing}}</p>
-        <table>
+        <p ng-if="showing.length!=0">{{showing}}</p>
+        <table ng-if="showing.length!=0">
             <tr>
                 <th>uuid</th>
                 <th>Name</th>

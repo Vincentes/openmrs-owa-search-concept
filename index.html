@@ -87,7 +87,7 @@
             ng-model="query" 
         />
         <button id="searchBtn" ng-click="searchConcept()">Search</button>
-        <p ng-if="showing.length!=0">{{showing}}</p>
+        <p class="font-italic" ng-if="showing.length!=0">showing search results for <span class="font-normal">'{{showing}}'</span></p>
         <table ng-if="showing.length!=0">
             <tr>
                 <th>uuid</th>

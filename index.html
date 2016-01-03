@@ -7,7 +7,6 @@
         <script src="js/vendor/angular.min.js"></script>
         <script src="js/vendor/jquery-2.1.4.min.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/dialog.js"></script>
         <script type="text/javascript">
             loadManifest();
         </script>
@@ -48,8 +47,8 @@
         }  
 
         tr:hover {background-color: #f2f2f2;}
-        tr:hover td {background-color: transparent;}
-        
+        tr:hover td {background-color: transparent; cursor: pointer;}
+
         .font-normal {
             font-style: normal; 
         }
@@ -102,13 +101,11 @@
         <p class="font-italic" ng-if="showing.length!=0">showing search results for <span class="font-normal">'{{showing}}'</span></p>
         <table ng-if="showing.length!=0">
             <tr>
-                <th>uuid</th>
                 <th>Name</th>
                 <th>Description</th>
             </tr>
             <td class="font-italic" ng-show="!concepts.length" colspan="3">No concepts found</td>
-            <tr ng-show="concepts.length" ng-repeat="concept in concepts" ng-click="setSelectedConcept(concept.uuid);   showDetailsDialog()">
-                <td>{{concept.uuid}}</td>
+            <tr ng-show="concepts.length" ng-repeat="concept in concepts" ng-click="redirectToDictionary(concept.id)">
                 <td>{{concept.name.name}}</td>
                 <td>{{concept.description.display}}</td>
             </tr>

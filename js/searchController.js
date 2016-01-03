@@ -16,7 +16,8 @@ app.controller('SearchConceptCtrl', function($scope, $http) {
 		    	console.log('REST success');
 		  	}).
 		  	error(function (data, status, headers, config) {
-		   		alert('Could not search through concepts!');
+		   		console.log('REST failure');
 		  	});
 		};
-});
+	}
+);

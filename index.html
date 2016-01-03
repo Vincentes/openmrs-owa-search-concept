@@ -7,18 +7,13 @@
         <script src="js/vendor/angular.min.js"></script>
         <script src="js/vendor/jquery-2.1.4.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/dialog.js"></script>
         <script type="text/javascript">
             loadManifest();
         </script>
         <script type="text/javascript" src="js/searchController.js"></script>
-        <style>
 
-        body {
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            font-family: 'Lucida Console', Monaco, monospace;
-        }
+        <style>
 
         button {
             border:2px solid #009384;
@@ -52,8 +47,9 @@
             font-size: 150%;
         }  
 
-        tr:nth-child(even){background-color: #f2f2f2}
-
+        tr:hover {background-color: #f2f2f2;}
+        tr:hover td {background-color: transparent;}
+        
         .font-normal {
             font-style: normal; 
         }
@@ -66,6 +62,15 @@
             font-style: oblique;
         }
 
+        .position-centered {
+            margin: auto;  
+            position: absolute;
+            left:0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
         .large-field {
             border:2px solid #009384;
             border-radius:10px;
@@ -75,16 +80,23 @@
             width: 800px;
         }
 
+        .container {
+            text-align: center;
+            font-family: 'Lucida Console', Monaco, monospace;
+        }
+
         </style>
     </head>
     <body ng-controller="SearchConceptCtrl">
+    <div class="container">
         <h1 style='color:#009384;font-weight:lighter'>Search Concept</h1>
         <input type="text" class="large-field" 
             onkeydown="
                 if (event.keyCode == 13)
-                        document.getElementById('searchBtn').click()
+                    document.getElementById('searchBtn').click()
             "
-            ng-model="query" 
+            ng-model="query"
+            style="text-align:center"
         />
         <button id="searchBtn" ng-click="searchConcept()">Search</button>
         <p class="font-italic" ng-if="showing.length!=0">showing search results for <span class="font-normal">'{{showing}}'</span></p>
@@ -94,11 +106,15 @@
                 <th>Name</th>
                 <th>Description</th>
             </tr>
-            <tr ng-repeat="concept in concepts">
+            <td class="font-italic" ng-show="!concepts.length" colspan="3">No concepts found</td>
+            <tr ng-show="concepts.length" ng-repeat="concept in concepts" ng-click="setSelectedConcept(concept.uuid);   showDetailsDialog()">
                 <td>{{concept.uuid}}</td>
                 <td>{{concept.name.name}}</td>
                 <td>{{concept.description.display}}</td>
             </tr>
+            </div>
+            </div>
         </table>
+    </div>
     </body>
 </html>

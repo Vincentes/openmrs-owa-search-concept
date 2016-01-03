@@ -1,5 +1,5 @@
 # OpenMRS Search Concept OWA
-This the repository for the Search Concept OWA.
+This is the repository for the Search Concept OWA.
 
 # Implement
 To implement this web app first clone the repository
